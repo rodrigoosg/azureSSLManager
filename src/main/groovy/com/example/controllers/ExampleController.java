@@ -22,7 +22,7 @@ public class ExampleController {
         
         ExampleService exampleService = new ExampleService();
         
-        get("/example/index", (req, res) -> exampleService.consumeExampleService("Some parameter"));
+        get("/example/index", (req, res) -> exampleService.executeSimpleCommand("ls", "src/test/resources/testDirectory/"));
         
     }
 }
