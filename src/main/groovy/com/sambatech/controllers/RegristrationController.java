@@ -22,7 +22,7 @@ public class RegristrationController {
         
         RegistrationService exampleService = new RegistrationService();
         
-        get("/example/index", (req, res) -> exampleService.executeSimpleCommand("ls", "src/test/resources/testDirectory/"));
+        get("/registration/index", (req, res) -> exampleService.executeSimpleCommand("ls", "src/test/resources/testDirectory/", ""));
         
     }
 }
