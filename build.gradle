@@ -1,0 +1,81 @@
+plugins{
+	id 'eclipse'
+	id 'groovy'
+	id 'com.github.johnrengelman.shadow' version '1.2.2'
+}
+
+group = 'examples'
+version = '1.0'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+sourceSets {
+	main {
+		groovy {
+			srcDirs = ['src/main/groovy']
+		}
+	}
+
+	test {
+		groovy {
+			srcDirs = ['test/groovy']
+		}
+		resources {
+			srcDirs = ['test/resources']
+		}
+	}
+}
+
+dependencies {
+    compile 'com.sparkjava:spark-core:2.2'
+	compile 'org.codehaus.groovy:groovy-all:2.4.4'
+	testCompile "org.spockframework:spock-core:1.0-groovy-2.4"
+	testCompile "cglib:cglib-nodep:2.2"
+}
+
+jar {
+    baseName = "example-Rodrigo-not-executable"
+    manifest {
+        attributes	'Main-Class': 'com.example.controllers.ExampleController',
+                'Implementation-Title': 'Example code',
+                'Implementation-Version': version
+    }
+}
+
+shadowJar {
+	baseName = 'example-Rodrigo'
+}
+
+artifacts {
+	archives shadowJar
+}
+
+println shadowJar.archivePath
+
+task runJar(dependsOn:shadowJar) << {
+	javaexec { main="-jar"; args shadowJar.archivePath }
+}
+
+task zip(type: Zip) {
+	
+	baseName = 'example-Rodrigo'
+	
+	from ('src'){
+		into 'src'
+	}
+	
+	from ('build/docs')
+	from('build.gradle')
+}
+
+task javaDoc(type: Javadoc) {
+	source = sourceSets.main.allJava
+}
+
+task wrapper(type:Wrapper) {
+	gradleVersion="2.6"
+}
