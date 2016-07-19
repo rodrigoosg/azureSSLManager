@@ -1,6 +1,6 @@
-package com.example
+package com.sambatech
 
-class ExampleService {
+class RegistrationService {
 	
 	String executeSimpleCommand(String command, String[] params){
 		def sout = new StringBuilder(), serr = new StringBuilder()

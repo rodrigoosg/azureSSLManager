@@ -1,21 +1,22 @@
-package com.example;
+package com.sambatech;
 
-import com.example.controllers.ExampleController;
+import com.sambatech.controllers.RegristrationController;
+import com.sambatech.RegistrationService;
 
 import spock.lang.Specification;
 import spock.lang.Ignore;
 
-class ExampleServiceSpec extends Specification {
+class RegistrationServiceSpec extends Specification {
 	
 	def setup() {
 	}
 	
 	def "should list the contents of a directory"() {
 		given:
-		ExampleService exampleService = new ExampleService()
+		RegistrationService registrationService = new RegistrationService()
 		
 		when:
-		String result = exampleService.executeSimpleCommand("ls", "src/test/resources/testDirectory/", "")
+		String result = registrationService.executeSimpleCommand("ls", "src/test/resources/testDirectory/", "")
 		
 		then:
 		result == "registerDomainPoc.sh\n"
@@ -23,10 +24,10 @@ class ExampleServiceSpec extends Specification {
 	
 	def "should execute registerDomain script without parameters"() {
 		given:
-		ExampleService exampleService = new ExampleService()
+		RegistrationService registrationService = new RegistrationService()
 		
 		when:
-		String result = exampleService.executeSimpleCommand("bash", "src/test/resources/testDirectory/registerDomainPoc.sh", "")
+		String result = registrationService.executeSimpleCommand("bash", "src/test/resources/testDirectory/registerDomainPoc.sh", "")
 		
 		then:
 		result == "Usage: registerDomain.sh www.example.com 25\n"
@@ -34,10 +35,10 @@ class ExampleServiceSpec extends Specification {
 	
 	def "should execute registerDomain script"() {
 		given:
-		ExampleService exampleService = new ExampleService()
+		RegistrationService registrationService = new RegistrationService()
 		
 		when:
-		String result = exampleService.executeSimpleCommand("bash", "src/test/resources/testDirectory/registerDomainPoc.sh", "loiatan@gmail.com")
+		String result = registrationService.executeSimpleCommand("bash", "src/test/resources/testDirectory/registerDomainPoc.sh", "loiatan@gmail.com")
 		
 		then:
 		result == 

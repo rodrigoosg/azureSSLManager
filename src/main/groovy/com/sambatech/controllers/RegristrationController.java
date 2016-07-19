@@ -1,8 +1,8 @@
-package com.example.controllers;
+package com.sambatech.controllers;
 
 import static spark.Spark.*;
 
-import com.example.ExampleService;
+import com.sambatech.RegistrationService;
 
 /**
  * This is the Spark`s main class and in our context it acts as a controller, routing the HTTP requests
@@ -14,13 +14,13 @@ import com.example.ExampleService;
  * @author Rodrigo Guimaraes
  * 
  */
-public class ExampleController {
+public class RegristrationController {
 	
     public static void main(String[] args) {
     	// Sets HTTP port that spark server will listen to 
         port(8080);
         
-        ExampleService exampleService = new ExampleService();
+        RegistrationService exampleService = new RegistrationService();
         
         get("/example/index", (req, res) -> exampleService.executeSimpleCommand("ls", "src/test/resources/testDirectory/"));
         
