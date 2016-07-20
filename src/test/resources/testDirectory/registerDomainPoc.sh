@@ -20,10 +20,16 @@ fi
 echo "Domain(s) to be registered: $FQDNset";
 
 echo "Downloading certbot-auto...";
-wget https://dl.eff.org/certbot-auto; chmod a+x ./certbot-auto;
+sudo wget https://dl.eff.org/certbot-auto; 
+
+echo "Setting executable permissions for certbot-auto...";
+sudo chmod a+x ./certbot-auto;
 
 # There are other validation methods you can use to generate the certificate. For this prototype we used WEBROOT method that relies on an apache server running to solve the challenge. For other methods and understanding o the other parameters see https://certbot.eff.org/docs/using.html
 echo "Generating certificate for $FQDNset...";
-./certbot-auto certonly --webroot -w /var/www/html/ $FQDNset --staging --email $DOMAIN_ADMIN_EMAIL --agree-tos --expand --debug --non-interactive;
+sudo ./certbot-auto certonly --webroot -w /var/www/html/ $FQDNset --staging --email $DOMAIN_ADMIN_EMAIL --agree-tos --expand --debug --non-interactive;
+
+echo "Converting certificate to Azure format..."
+sudo openssl pkcs12 -inkey /etc/letsencrypt/live/letsencrypt.agileoperations.com.br/privkey.pem -in /etc/letsencrypt/live/letsencrypt.agileoperations.com.br/cert.pem -export -out cert.pfx
 
 echo "Done!"

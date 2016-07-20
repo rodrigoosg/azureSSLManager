@@ -1,6 +1,11 @@
 package com.sambatech.controllers;
 
-import static spark.Spark.*;
+import static spark.Spark.get;
+import static spark.Spark.post;
+import static spark.SparkBase.port;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import com.sambatech.RegistrationService;
 
@@ -20,9 +25,17 @@ public class RegristrationController {
     	// Sets HTTP port that spark server will listen to 
         port(8080);
         
-        RegistrationService exampleService = new RegistrationService();
+        RegistrationService registrationService = new RegistrationService();
         
-        get("/registration/index", (req, res) -> exampleService.executeSimpleCommand("ls", "src/test/resources/testDirectory/", ""));
+        List<String> params = new ArrayList<String>();
         
+        params.add("src/test/resources/testDirectory/");
+        params.add("");
+        
+        get("/registration/index", (req, res) -> registrationService.executeSimpleCommand("ls", params));
+        
+        post("/registration/certificate", (request, response) -> {
+            return registrationService.registerNewDomainToCertificate(request, response);
+        });
     }
 }
