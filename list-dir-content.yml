@@ -4,6 +4,9 @@ image_resource:
     type: docker-image
     source: {repository: busybox}
 
+inputs:
+- name: azureSSLManager
+
 run:
     path: ls
-    args: ['-lart']
+    args: ['-lart', 'azureSSLManager']
