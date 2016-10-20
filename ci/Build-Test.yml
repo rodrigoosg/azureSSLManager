@@ -6,12 +6,12 @@ resources:
     branch: ci-development
 
 jobs:
-- name: TestAndBuild-azureSSLManager
+- name: Test-azureSSLManager
   public: true
   plan:
   - get: azureSSLManager
   - aggregate:
-    - task: build-azureSSLManager
+    - task: test-RegistrationServiceSpec
       file: azureSSLManager/RegistrationServiceSpec.yml
-    - task: test-azureSSLManager
-      file: azureSSLManager/test.yml
+    - task: test-RegistrationServiceIntegrationSpec
+      file: azureSSLManager/RegistrationServiceIntegrationSpec.yml
