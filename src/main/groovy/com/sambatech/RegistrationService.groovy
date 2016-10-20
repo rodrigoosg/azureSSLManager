@@ -22,7 +22,7 @@ class RegistrationService {
 		if(registrationResult[1]){
 			response.status(500)
 			println "Could not generate certificate:"
-			println "registrationResult[1]"
+			println "Error: registrationResult[1]"
 			return registrationResult[1]
 		} else {
 			response.status(200)
