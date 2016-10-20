@@ -6,5 +6,5 @@ set -e -x
 
 pushd azureSSLManager
   chmod +x gradlew gradle/wrapper/*;
-  ./gradlew test;
+  ./gradlew -Dtest.single=$1 test;
 popd
