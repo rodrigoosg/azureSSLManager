@@ -11,6 +11,8 @@ jobs:
   plan:
   - get: azureSSLManager
   - task: list-directory-content
+    file: azureSSLManager/build.yml
+  - task: list-directory-content
     file: azureSSLManager/list-dir-content.yml
   - task: list-parent-directory-content
     file: azureSSLManager/list-parent-dir-content.yml

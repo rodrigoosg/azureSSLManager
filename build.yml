@@ -1,0 +1,14 @@
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: java
+    tag: 8u102-jdk
+
+inputs:
+- name: azureSSLManager
+
+run:
+    path: bash 
+    args: ['azureSSLManager/build.sh']
