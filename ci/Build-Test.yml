@@ -6,13 +6,16 @@ resources:
     branch: ci-development
 
 jobs:
+- name: test-azureSSLManager
+  public: true
+  plan:
+  - get: azureSSLManager
+  - task: test-azureSSLManager
+    file: azureSSLManager/test.yml
+
 - name: build-azureSSLManager
   public: true
   plan:
   - get: azureSSLManager
   - task: build-azureSSLManager
     file: azureSSLManager/build.yml
-  - task: list-directory-content
-    file: azureSSLManager/list-dir-content.yml
-  - task: list-parent-directory-content
-    file: azureSSLManager/list-parent-dir-content.yml
