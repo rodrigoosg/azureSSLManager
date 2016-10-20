@@ -5,4 +5,5 @@ image_resource:
     source: {repository: busybox}
 
 run:
-    path: ls
+    path: gradlew
+    args: ['test']
