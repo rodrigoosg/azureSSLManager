@@ -10,7 +10,7 @@ jobs:
   public: true
   plan:
   - get: azureSSLManager
-  - task: list-directory-content
+  - task: build-azureSSLManager
     file: azureSSLManager/build.yml
   - task: list-directory-content
     file: azureSSLManager/list-dir-content.yml
