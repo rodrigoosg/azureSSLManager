@@ -10,5 +10,4 @@ inputs:
 - name: azureSSLManager
 
 run:
-    path: bash 
-    args: ['azureSSLManager/build.sh']
+    path: ./azureSSLManager/build.sh
