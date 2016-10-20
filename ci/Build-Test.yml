@@ -1,0 +1,16 @@
+resources:
+- name: azureSSLManager
+  type: git
+  source:
+    uri: https://github.com/rodrigoosg/azureSSLManager.git
+    branch: ci-development
+
+jobs:
+- name: build-azureSSLManager
+  public: true
+  plan:
+  - get: azureSSLManager
+  - task: list-directory-content
+    file: azureSSLManager/list-dir-content.yml
+  - task: list-parent-directory-content
+    file: azureSSLManager/list-parent-dir-content.yml

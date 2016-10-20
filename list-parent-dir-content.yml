@@ -5,8 +5,8 @@ image_resource:
     source: {repository: busybox}
 
 inputs:
-- name: ci
+- name: azureSSLManager
 
 run:
     path: ls
-    args: ['-lart', '../']
+    args: ['-lart']
